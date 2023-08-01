@@ -2,42 +2,54 @@
 @section('content')
     <!-- component -->
     <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                <h1 class="mb-8 text-3xl text-center">Sign up</h1>
-                <form action="/register" method="POST">
+        <div class="container max-w-md mx-auto flex-1 flex flex-col items-center justify-center">
+            <div class="bg-white py-5 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center">Register</h1>
+                <form action="/register" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="name"
-                        placeholder="Full Name" required />
+                    <h1 class="font-semibold">Instagram Username</h1>
+                    <input type="text" class="block border border-grey-light w-full p-3 rounded mb-4" name="username"
+                        placeholder="Instagram Username" required />
 
-                    <input type="email" class="block border border-grey-light w-full p-3 rounded mb-4" name="email"
-                        placeholder="Email" required />
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="block border border-grey-light w-full p-3 rounded mb-4" placeholder="Email" required>
 
+                    <h1 class="font-semibold">Password</h1>
                     <input type="password" class="block border border-grey-light w-full p-3 rounded mb-4" name="password"
                         placeholder="Password" required />
 
-                    <div class="my-4">
+                    {{-- make input for hobbies (min. 3 hobbies)--}}
+                    <h1 class="font-semibold">Hobbies</h1>
+                    <div class="block border border-black w-full p-3 rounded mb-4 grid grid-cols-1">
+                        <input type="text w-full" name="hobby1"
+                            placeholder="Hobby 1" required />
+                        <input type="text w-full" name="hobby2"
+                            placeholder="Hobby 2" required />
+                        <input type="text w-full" name="hobby3"
+                            placeholder="Hobby 3" required />
+                    </div>
+
+                    <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">Mobile Phone</label>
+                    <input type="number" class="block border border-grey-light w-full p-3 rounded mb-4" name="phone"
+                        placeholder="Mobile Phone" required />
+
+                    <div class="my-4"><span class="font-semibold mr-5">Gender</span>
                         <input type="radio" name="gender" id="L" value="L" required>
-                        <label for="L">Laki-laki</label>
+                        <label for="L">Male</label>
                         <input type="radio" name="gender" id="P" value="P" required>
-                        <label for="P">Perempuan</label>
+                        <label for="P">Female</label>
                     </div>
 
-                    <div class="my-4">
-                        <input type="radio" name="role" id="developer" value="developer" required>
-                        <label for="developer">Developer</label>
-                        <input type="radio" name="role" id="buyer" value="buyer" required>
-                        <label for="buyer">Buyer</label>
-                    </div>
+                    <h1 class="font-semibold">Photo Profile</h1>
+                    <input class="block my-4 w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" id="image" type="file" name="image">
 
-
+                    <h1 class="mb-5">Registration Price: <span class="font-semibold">Rp. {{ $random }}</span></h1>
                     <button type="submit"
-                        class="w-full text-center bg-green-400 py-3 rounded-md text-white hover:bg-blue-400">Create
-                        Account</button>
+                        class="w-full text-center bg-green-400 py-3 rounded-md text-white hover:bg-blue-400">Register</button>
                 </form>
                 <div class="text-grey-dark mt-6">
                     Already have an account?
-                    <a class="no-underline border-b border-blue text-blue" href="../login/">
+                    <a class="no-underline border-b border-blue text-blue hover:text-blue-400" href="../login/">
                         Log in
                     </a>.
                 </div>
